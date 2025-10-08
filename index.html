@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frianxc & Dajuns 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(to bottom, #87ceeb, #ffffff);
+      background-image: url('https://i.imgur.com/Z5aFv8t.png');
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 1.8em;
+      color: #444;
+      text-shadow: 1px 1px 2px white;
+    }
+
+    #contador {
+      font-size: 1.5em;
+      margin: 30px 0;
+      background: rgba(255, 255, 255, 0.6);
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .botones {
+      margin-top: 25px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff8fab;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background-color: #ffb6c1;
+    }
+
+    .snoopy {
+      position: absolute;
+      width: 120px;
+      opacity: 0.9;
+    }
+
+    .snoopy1 { top: 20px; left: 20px; }
+    .snoopy2 { bottom: 20px; right: 20px; }
+    .snoopy3 { bottom: 40px; left: 30px; }
+
+    /* Ventana emergente */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .popup img {
+      width: 250px;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .cerrar {
+      margin-top: 20px;
+      padding: 8px 18px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Tiempo juntos de full sufrimiento jiji, mentiris de mucho amor 👻❤️</h1>
+
+  <div id="contador"></div>
+
+  <div class="botones">
+    <button onclick="toggleMusic()">🎵 Música</button>
+    <button onclick="mostrarFotos()">📸 Ver fotos</button>
+  </div>
+
+  <!-- Snoopys decorativos -->
+  <img src="https://i.imgur.com/3rvF36b.png" class="snoopy snoopy1">
+  <img src="https://i.imgur.com/EN7yY4z.png" class="snoopy snoopy2">
+  <img src="https://i.imgur.com/xgUIoQ4.png" class="snoopy snoopy3">
+
+  <!-- Ventana emergente -->
+  <div id="popup" class="popup">
+    <img src="foto1.jpeg" alt="Foto 1">
+    <img src="foto2.jpeg" alt="Foto 2">
+    <img src="foto3.jpeg" alt="Foto 3">
+    <button class="cerrar" onclick="cerrarPopup()">Cerrar ✖️</button>
+  </div>
+
+  <audio id="miCancion" src="Taylor Swift - You Are In Love (Taylor's Version) (Lyric Video) - Taylor Swift.mp3"></audio>
+
+  <script>
+    // Contador desde 7/10/2023
+    const inicio = new Date("2023-10-07T00:00:00");
+    const contador = document.getElementById("contador");
+
+    setInterval(() => {
+      const ahora = new Date();
+      const diff = ahora - inicio;
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      contador.textContent = `${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos 💞`;
+    }, 1000);
+
+    // Música
+    let reproduciendo = false;
+    const cancion = document.getElementById("miCancion");
+    function toggleMusic() {
+      if (reproduciendo) {
+        cancion.pause();
+      } else {
+        cancion.play();
+      }
+      reproduciendo = !reproduciendo;
+    }
+
+    // Ventana de fotos
+    function mostrarFotos() {
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function cerrarPopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
